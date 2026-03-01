@@ -1,5 +1,5 @@
 ---
-name: review
+name: markdown-plan-review-feedback
 description: Open an interactive plan review UI in the browser to collect structured feedback on a markdown file.
 ---
 
