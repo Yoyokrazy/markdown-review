@@ -5,7 +5,7 @@
 <h1 align="center">Plan Review</h1>
 
 <p align="center">
-  <strong>Stop reviewing AI plans in chat. Review them like documents.</strong>
+  <strong>Review markdown documents with AI agents — answer inline questions, annotate sections, and send structured feedback back in one click.</strong>
 </p>
 
 <p align="center">
@@ -17,14 +17,14 @@
 
 ## Why Plan Review?
 
-AI coding agents are great at implementation — but most of your time is spent aligning on *what* to build. You're reviewing `PLAN.md`, `SPEC.md`, or `ARCHITECTURE.md` files, resolving open questions, and refining scope — all buried in a chat thread.
-
-**Plan Review turns that workflow inside out.** Instead of scrolling through chat, you review plans as interactive documents — right inside VS Code:
+**Plan Review keeps everything in one place.** The document *is* the review surface — read it, annotate it, answer embedded questions, and send feedback back to the agent without ever leaving the file:
 
 - 🔍 **Read plans as documents, not chat messages** — clean, readable layout with a live outline and notes panel.
 - ❓ **Answer AI-embedded questions in context** — agents can drop `question:open`, `question:choice`, and `question:checkbox` blocks directly into the plan.
 - ✏️ **Annotate any section with one click** — leave comments on paragraphs, headings, code blocks, or list items.
 - 🚀 **Send structured feedback to Copilot in one click** — your answers and annotations flow back to the agent automatically, ready for it to act on.
+
+AI coding agents are great at implementation — but most of your time is spent aligning on *what* to build. You're reading a plan in one window, switching to a chat thread in another to give feedback, and copy-pasting snippets just to reference a specific section. There's no way to point at a paragraph and say "change this" without manually quoting it.
 
 ---
 
@@ -65,11 +65,11 @@ After submitting a comment, a dot marker appears on the block and the note appea
 ## Features
 
 - **Interactive document rendering** — headings, paragraphs, lists, blockquotes, and syntax-highlighted code blocks, all clickable.
-- **Embedded AI questions** — `question:open`, `question:choice`, and `question:checkbox` blocks rendered inline; answers tracked in state.
-- **Inline annotations** — click any block to leave a comment; markers appear at the source block.
-- **General feedback** — a persistent input at the bottom for overall plan comments.
-- **One-click feedback to Copilot** — when you close the review panel or click Export, the full structured feedback is sent to Copilot chat automatically.
-- **Dark theme** — high-contrast, reading-optimised layout that matches VS Code's default dark theme.
+- **Embedded AI questions** — open-text, single-choice, and multi-checkbox questions rendered inline.
+- **Inline annotations** — click any block to leave a comment; markers appear at the source.
+- **General feedback** — a persistent input for overall document comments.
+- **One-click feedback to Copilot** — close the panel or click Export and structured feedback is sent to Copilot chat automatically.
+- **Dark theme** — high-contrast, reading-optimised, matches VS Code's default dark theme.
 - **Responsive layout** — works from narrow split-editor panes to full-screen webview panels.
 
 ---

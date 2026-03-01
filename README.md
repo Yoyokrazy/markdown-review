@@ -1,9 +1,8 @@
 # Plan Review UI
 
-[![CI](https://github.com/rwoll/markdown-review/actions/workflows/ci.yml/badge.svg)](https://github.com/rwoll/markdown-review/actions/workflows/ci.yml)
-[![npm version](https://img.shields.io/npm/v/markdown-review)](https://www.npmjs.com/package/markdown-review)
-[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/rwoll.markdown-review)](https://marketplace.visualstudio.com/items?itemName=rwoll.markdown-review)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Copilot CLI Plugin Available](https://img.shields.io/badge/Copilot%20CLI%20Plugin-Available-24292f?logo=github)](#copilot-cli-plugin)
+[![Install in VS Code](https://img.shields.io/badge/VS%20Code-Install-0078d4?logo=visualstudiocode&logoColor=white)](vscode:extension/rwoll.markdown-review)
+[![Install in VS Code Insiders](https://img.shields.io/badge/VS%20Code%20Insiders-Install-24bfa5?logo=visualstudiocode&logoColor=white)](vscode-insiders:extension/rwoll.markdown-review)
 
 > Interactive plan review UI for markdown files — annotate sections,
 > answer AI-agent embedded questions, and export structured feedback.
@@ -19,10 +18,6 @@ Plan Review is a single review UI deployed across three surfaces — all sharing
 ## VS Code Extension
 
 Install the extension from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=rwoll.markdown-review) to review markdown plans directly inside VS Code.
-
-```
-ext install rwoll.markdown-review
-```
 
 Once installed, right-click any `.md` file in Explorer and select **Open With… → Plan Review**, or run the **Plan Review: Open** command from the Command Palette.
 
