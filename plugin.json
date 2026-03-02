@@ -1,7 +1,7 @@
 {
   "name": "markdown-review",
   "description": "Markdown viewer with inline commenting — annotate any .md file, answer embedded questions, export structured feedback",
-  "version": "0.1.0",
+  "version": "0.0.6",
   "author": {
     "name": "rwoll"
   },

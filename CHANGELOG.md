@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.0.4] — 2026
+## [0.0.6] — 2026
 
 ### Added
 - VS Code extension with custom editor for markdown plan review
