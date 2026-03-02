@@ -17,7 +17,7 @@
 
 ## Demo
 
-![Demo of the Markdown Review annotation workflow](https://github.com/user-attachments/assets/aeb47c47-079a-4f7b-9ddb-808ac102714e)
+![Demo of the Markdown Review annotation workflow](https://raw.githubusercontent.com/rwoll/markdown-review/main/packages/vscode/images/hero-demo-full.gif)
 
 ### Screenshot
 

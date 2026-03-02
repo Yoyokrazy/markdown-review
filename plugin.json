@@ -1,13 +1,19 @@
 {
   "name": "markdown-review",
-  "description": "Markdown viewer with inline commenting — annotate any .md file, answer embedded questions, export structured feedback",
-  "version": "0.0.6",
+  "description": "Markdown viewer with inline commenting \u2014 annotate any .md file, answer embedded questions, export structured feedback",
+  "version": "0.0.8",
   "author": {
     "name": "rwoll"
   },
   "repository": "https://github.com/rwoll/markdown-review",
   "license": "MIT",
-  "keywords": ["review", "plan", "feedback", "markdown", "annotation"],
+  "keywords": [
+    "review",
+    "plan",
+    "feedback",
+    "markdown",
+    "annotation"
+  ],
   "category": "productivity",
   "skills": "packages/copilot-plugin/skills/"
 }

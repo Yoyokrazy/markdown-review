@@ -2,7 +2,7 @@
   "name": "markdown-review-vscode",
   "displayName": "Markdown Review",
   "description": "Interactive plan review UI for markdown files",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "publisher": "rwoll",
   "repository": {
     "type": "git",
@@ -11,7 +11,9 @@
   "engines": {
     "vscode": "^1.85.0"
   },
-  "categories": ["Other"],
+  "categories": [
+    "Other"
+  ],
   "activationEvents": [
     "onStartupFinished"
   ],
@@ -36,9 +38,11 @@
     "README.md"
   ],
   "contributes": {
-    "chatSkills": [{
-      "path": "./markdown-plan-review-feedback/SKILL.md"
-    }],
+    "chatSkills": [
+      {
+        "path": "./markdown-plan-review-feedback/SKILL.md"
+      }
+    ],
     "commands": [
       {
         "command": "planReview.open",
@@ -50,7 +54,9 @@
         "viewType": "planReview.markdownEditor",
         "displayName": "Markdown Review",
         "selector": [
-          { "filenamePattern": "*.md" }
+          {
+            "filenamePattern": "*.md"
+          }
         ],
         "priority": "default"
       }
