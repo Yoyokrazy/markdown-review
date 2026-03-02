@@ -8,18 +8,16 @@
   <strong>A markdown viewer with inline commenting for the AI era — read any <code>.md</code> file, annotate sections, answer AI-embedded questions, and export structured feedback.</strong>
 </p>
 
-<p align="center">
-  <a href="vscode:extension/rwoll.markdown-review"><img src="https://img.shields.io/badge/VS%20Code-Install-0078d4?logo=visualstudiocode&logoColor=white" alt="Install in VS Code"></a>
-  <a href="vscode-insiders:extension/rwoll.markdown-review"><img src="https://img.shields.io/badge/VS%20Code%20Insiders-Install-24bfa5?logo=visualstudiocode&logoColor=white" alt="Install in VS Code Insiders"></a>
-  <a href="#copilot-cli-plugin"><img src="https://img.shields.io/badge/Copilot%20CLI%20Plugin-Available-24292f?logo=github" alt="Copilot CLI Plugin Available"></a>
-  <a href="https://www.npmjs.com/package/markdown-review"><img src="https://img.shields.io/npm/v/markdown-review" alt="npm version"></a>
-</p>
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-VS_Code?style=flat-square&label=Install&color=0098FF)](vscode:extension/rwoll.markdown-review-vscode)
+[![Install in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-VS_Code_Insiders?style=flat-square&label=Install&color=24bfa5)](vscode-insiders:extension/rwoll.markdown-review-vscode)
+[![Copilot CLI Plugin Available](https://img.shields.io/badge/Copilot%20CLI%20Plugin-Available-24292f?logo=github)](#copilot-cli-plugin)
+[![npm version](https://img.shields.io/npm/v/markdown-review)](https://www.npmjs.com/package/markdown-review)
 
 ---
 
 ## Demo
 
-![Demo of the Markdown Review annotation workflow](https://raw.githubusercontent.com/rwoll/markdown-review/main/packages/vscode/images/hero-demo.gif)
+![Demo of the Markdown Review annotation workflow](https://github.com/user-attachments/assets/aeb47c47-079a-4f7b-9ddb-808ac102714e)
 
 ### Screenshot
 
@@ -42,7 +40,7 @@ Whether you're reviewing a `PLAN.md`, a `SPEC.md`, an `API.md`, or any other mar
 
 ## VS Code Extension
 
-Install the extension from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=rwoll.markdown-review) to review any markdown file directly inside VS Code.
+Install the extension from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=rwoll.markdown-review-vscode) to review any markdown file directly inside VS Code.
 
 Once installed, open any `.md` file — Markdown Review opens automatically as the default editor for Markdown files. Read the document, answer any embedded questions, and click sections to annotate. Close the panel (or press the **Export** button) — structured feedback is sent to Copilot chat.
 
