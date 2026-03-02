@@ -1,7 +1,7 @@
 import { test as base, expect } from '@playwright/test';
 import { resolve } from 'path';
-import { execSync } from 'child_process';
-import { existsSync, mkdirSync, readdirSync, unlinkSync } from 'fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
+import { pathToFileURL } from 'url';
 
 /**
  * Capture a hero demo video (converted to gif) for the README files.
@@ -139,19 +139,41 @@ test.afterAll(async () => {
   const webmPath = resolve(videoDir, files[0]);
   const gifPath = resolve(__dirname, '..', 'packages', 'vscode', 'images', 'hero-demo.gif');
 
+  // ── Load @ffmpeg/core (WebAssembly) directly in Node.js ──
+  const corePath = resolve(__dirname, '..', 'node_modules', '@ffmpeg', 'core', 'dist', 'umd', 'ffmpeg-core.js');
+  const wasmPath = resolve(__dirname, '..', 'node_modules', '@ffmpeg', 'core', 'dist', 'umd', 'ffmpeg-core.wasm');
+
+  // Polyfill browser globals that Emscripten expects
+  if (typeof globalThis.self === 'undefined') (globalThis as Record<string, unknown>).self = globalThis;
+  if (typeof globalThis.location === 'undefined') {
+    (globalThis as Record<string, unknown>).location = { href: pathToFileURL(corePath).toString() };
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const createFFmpegCore = require(corePath);
+  const wasmBinary = readFileSync(wasmPath);
+  const ffmpeg = await createFFmpegCore({ wasmBinary });
+
+  const webmData = new Uint8Array(readFileSync(webmPath));
+
   // Convert webm to gif using ffmpeg with a good palette for quality
   // Two-pass approach: generate palette, then use it for the gif
-  const palettePath = resolve(videoDir, 'palette.png');
+  ffmpeg.FS.writeFile('input.webm', webmData);
 
-  execSync(
-    `ffmpeg -y -i "${webmPath}" -vf "fps=12,scale=700:-1:flags=lanczos,palettegen=stats_mode=diff" "${palettePath}"`,
-    { stdio: 'pipe' },
-  );
+  // Disable timeout — conversion duration depends on video length
+  ffmpeg.setTimeout(-1);
+  ffmpeg.exec('-y', '-i', 'input.webm', '-vf', 'fps=12,scale=700:-1:flags=lanczos,palettegen=stats_mode=diff', 'palette.png');
+  if (ffmpeg.ret !== 0) throw new Error(`ffmpeg palette generation failed with code ${ffmpeg.ret}`);
+  // Reset internal state between exec calls
+  ffmpeg.reset();
 
-  execSync(
-    `ffmpeg -y -i "${webmPath}" -i "${palettePath}" -lavfi "fps=12,scale=700:-1:flags=lanczos[x];[x][1:v]paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" "${gifPath}"`,
-    { stdio: 'pipe' },
-  );
+  ffmpeg.setTimeout(-1);
+  ffmpeg.exec('-y', '-i', 'input.webm', '-i', 'palette.png', '-lavfi', 'fps=12,scale=700:-1:flags=lanczos[x];[x][1:v]paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle', 'output.gif');
+  if (ffmpeg.ret !== 0) throw new Error(`ffmpeg gif conversion failed with code ${ffmpeg.ret}`);
+  ffmpeg.reset();
+
+  const gifData = ffmpeg.FS.readFile('output.gif');
+  writeFileSync(gifPath, gifData);
 
   console.log(`Hero gif saved to ${gifPath}`);
 });
