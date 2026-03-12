@@ -1,11 +1,13 @@
 ---
 name: markdown-plan-review-feedback
-description: Generate markdown (*.md) with inline questions for the user to answer. Use when designing plans, clarifying specs, or gathering structured feedback on proposals.
+description: Generate markdown (*.spec.md) with inline questions for the user to answer. Use when designing plans, clarifying specs, or gathering structured feedback on proposals.
 ---
 
 # Plan Review Skill
 
-Generate or edit a `*.md` file that the user will review in an interactive Plan Review UI. The UI renders your markdown and lets the user answer embedded questions, leave inline annotations on any block, and add general comments.
+Generate or edit a `*.spec.md` file that the user will review in an interactive Plan Review UI. The UI renders your markdown and lets the user answer embedded questions, leave inline annotations on any block, and add general comments.
+
+**Important:** Always use the `.spec.md` extension (e.g. `plan.spec.md`, `auth-design.spec.md`) — the review editor only opens for `*.spec.md` files.
 
 ## Asking Questions
 

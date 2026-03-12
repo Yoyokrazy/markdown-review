@@ -55,7 +55,7 @@
         "displayName": "Markdown Review",
         "selector": [
           {
-            "filenamePattern": "*.md"
+            "filenamePattern": "*.spec.md"
           }
         ],
         "priority": "default"
@@ -64,7 +64,7 @@
     "menus": {
       "explorer/context": [
         {
-          "when": "resourceExtname == .md",
+          "when": "resourceFilename =~ /\\.spec\\.md$/",
           "command": "planReview.open",
           "group": "navigation"
         }
