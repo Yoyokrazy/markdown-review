@@ -134,7 +134,48 @@ class PlanReviewEditorProvider implements vscode.CustomTextEditorProvider {
   }
 }
 
+const EDITOR_VIEW_TYPE = 'planReview.markdownEditor';
+
+/** Keep workbench.editorAssociations in sync with planReview.fileSuffix */
+async function syncEditorAssociation() {
+  const suffix = vscode.workspace
+    .getConfiguration('planReview')
+    .get<string>('fileSuffix', '.spec.md');
+  const pattern = `*${suffix}`;
+
+  const config = vscode.workspace.getConfiguration('workbench');
+  const current = config.get<Record<string, string>>('editorAssociations', {});
+  const updated = { ...current };
+
+  // Remove any existing association pointing to our editor
+  for (const key of Object.keys(updated)) {
+    if (updated[key] === EDITOR_VIEW_TYPE) {
+      delete updated[key];
+    }
+  }
+
+  // Add the new one
+  updated[pattern] = EDITOR_VIEW_TYPE;
+
+  // Only write if something actually changed
+  if (JSON.stringify(current) !== JSON.stringify(updated)) {
+    await config.update('editorAssociations', updated, vscode.ConfigurationTarget.Global);
+  }
+}
+
 export function activate(context: vscode.ExtensionContext) {
+  // Sync editor association on startup
+  syncEditorAssociation();
+
+  // Re-sync when the setting changes
+  context.subscriptions.push(
+    vscode.workspace.onDidChangeConfiguration((e) => {
+      if (e.affectsConfiguration('planReview.fileSuffix')) {
+        syncEditorAssociation();
+      }
+    }),
+  );
+
   // Register custom editor for .md files
   const provider = new PlanReviewEditorProvider(context);
   context.subscriptions.push(
